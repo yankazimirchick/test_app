@@ -1,0 +1,16 @@
+
+body {
+    font-family: Circular Std;
+}
+.container {
+    max-width: 1024px;
+    margin: auto;
+}
+
+.bg-black {
+    background-color: black;
+
+}
+
+$medium_device : 'only screen and (min-width: 767px)';
+$mobile_device: 'only screen  and (max-width: 767px)';

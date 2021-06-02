@@ -1,13 +1,9 @@
 @import "reset";
+@import "common";
 @import "mixins";
 @import "fonts";
 
 
-
-
-body {
-    font-family: Circular Std;
-}
 
 header {
     z-index: 3;
@@ -22,27 +18,14 @@ header {
     }
 }
 
-
-
-.container {
-    max-width: 1024px;
-    margin: auto;
-}
-
-.bg-black {
-    background-color: black;
-
-}
-
-$medium_device : 'only screen and (min-width: 767px)';
-$mobile_device: 'only screen  and (max-width: 767px)';
-
-
-
-
 .screen-1 {
-    height: 100vh;
-    background-size: cover;
+    
+    @media #{$medium_device} {
+        height: 100vh;
+    }
+    @media #{$mobile_device} {
+        height: 640px;
+    }
 
     & .screen-1_inner-wrapper {
         position: relative;
@@ -64,11 +47,13 @@ $mobile_device: 'only screen  and (max-width: 767px)';
             @media #{$medium_device} {
                 font-size: 120px;
                 padding: 0 20px;
+                
             }
 
             @media #{$mobile_device} {
                 font-size: 68px;
                 padding: 0 20px;
+                margin-top: 50px;
             }
 
         }
@@ -119,7 +104,7 @@ $mobile_device: 'only screen  and (max-width: 767px)';
 
     @media #{$medium_device} {
         padding-top: 120px;
-        padding-bottom: 40px;
+        padding-bottom: 80px;
 
         summary:after {
             display: none;
@@ -227,26 +212,6 @@ $mobile_device: 'only screen  and (max-width: 767px)';
 
 
 
-.pt-1 {
-    padding-top: 120px;
-}
-
-.pt-2 {
-    padding-top: 40px;
-}
-
-.pb-1 {
-    padding-bottom: 120px;
-}
-
-.pb-2 {
-    padding-bottom: 40px;
-}
-
-
-
-
-
 
 
 /*dropdown list*/
@@ -321,11 +286,11 @@ details {
 
 
 .screen-3 {
-
+    position: relative;
     padding-bottom: 60px;
     .screen-3_text {
         padding: 0 20px;
-
+        
         @media #{$medium_device} {
             text-align: center;
         }
@@ -373,9 +338,21 @@ details {
 
 }
 
+
+
 .swiper-scrollbar {
-    width: 150px !important;
+    
+@media #{$medium_device} {
+  
+        width: 150px !important;
+        /*ПЕРЕОПРЕДЕЛНИЕ СТАНДАРТНОЙ ТЕМЫ SWIPE.JS*/
+}
+    
+@media #{$mobile_device} {
+    
+    width: 90% !important;
     /*ПЕРЕОПРЕДЕЛНИЕ СТАНДАРТНОЙ ТЕМЫ SWIPE.JS*/
+}
     position: relative !important;
     /*ПЕРЕОПРЕДЕЛНИЕ СТАНДАРТНОЙ ТЕМЫ SWIPE.JS*/
     height: 2px !important;
@@ -403,10 +380,22 @@ details {
     .swiper-slide_inner {
         padding: 0 10px;
     }
+    .swiper-slide p{
+        font-weight: 900;
+        line-height: 1.2;
+    }
 }
 
 @media #{$medium_device} {
-
+    .swiper-wrapper-big{
+        position: relative;
+    }
+    .swiper-slide p{
+        font-size: 24px;
+        font-weight: 900;
+        line-height: 1.1;
+        padding-top: 10px;
+    }
     .swiper-button-next::after {
         background: url(../img/next.svg);
         background-position: center;
@@ -415,7 +404,12 @@ details {
         height: 22px;
         margin: -20px;
     }
-
+    .swiper-button-prev{
+        margin-left: calc((92% - 1200px) / 2);
+    }
+    .swiper-button-next{
+        margin-right: calc((92% - 1200px) / 2);
+    }
     .swiper-button-prev::after {
         background: url(../img/Prev.svg);
         background-position: center;
